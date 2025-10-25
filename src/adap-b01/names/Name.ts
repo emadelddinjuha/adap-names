@@ -30,7 +30,7 @@ export class Name {
      * @param i - The index to check
      * @param allowEnd - If true, allows index equal to components.length (useful for insert at end)
      */
-     // @methodtype private-method (Helper)
+     // @methodtype helper-method
    private checkIndex(i: number, allowEnd: boolean = false): void {
         const max = allowEnd ? this.components.length : this.components.length - 1;
         if (i < 0 || i > max) {
@@ -42,7 +42,7 @@ export class Name {
      * Control characters are not escaped (creating a human-readable string)
      * Users can vary the delimiter character to be used
      */
-      // @methodtype get-method
+      // @methodtype conversion-method
     public asString(delimiter: string = this.delimiter): string {
        return this.components.join(delimiter);
     }
@@ -52,7 +52,7 @@ export class Name {
      * Machine-readable means that from a data string, a Name can be parsed back in
      * The control characters in the data string are the default characters
      */
-     // @methodtype get-method
+     // @methodtype conversion-method
     public asDataString(): string {
        return this.components.join(DEFAULT_DELIMITER);
      }
@@ -76,18 +76,18 @@ export class Name {
     }
 
     /** Expects that new Name component c is properly masked */
-    // @methodtype set-method
+    // @methodtype mutation-method [ command-method ]
     public insert(i: number, c: string): void {
         this.checkIndex(i, true);
         this.components.splice(i, 0, c);
     }
 
     /** Expects that new Name component c is properly masked */
-    // @methodtype set-method
+    // @methodtype mutation-method [ command-method ]
     public append(c: string): void {
         this.components.push(c);
     }
-    // @methodtype set-method
+    // @methodtype mutation-method [ command-method ]
     public remove(i: number): void {
         this.checkIndex(i);
         this.components.splice(i, 1);
