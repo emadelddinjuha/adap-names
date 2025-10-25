@@ -58,14 +58,14 @@ export class Name {
      }
     // @methodtype get-method
     public getComponent(i: number): string {
-        this.checkIndex(i);
+        this.assertIsValidIndex(i);
         return this.components[i];
     }
 
     /** Expects that new Name component c is properly masked */
      // @methodtype set-method
     public setComponent(i: number, c: string): void {
-        this.checkIndex(i);
+        this.assertIsValidIndex(i);
         this.components[i] = c;
     }
 
@@ -78,7 +78,7 @@ export class Name {
     /** Expects that new Name component c is properly masked */
     // @methodtype command-method
     public insert(i: number, c: string): void {
-        this.checkIndex(i, true);
+        this.assertIsValidIndex(i, true);
         this.components.splice(i, 0, c);
     }
 
@@ -89,7 +89,7 @@ export class Name {
     }
     // @methodtype command-method
     public remove(i: number): void {
-        this.checkIndex(i);
+        this.assertIsValidIndex(i);
         this.components.splice(i, 1);
      }
 
