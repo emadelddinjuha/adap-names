@@ -30,7 +30,7 @@ export class Name {
      * @param i - The index to check
      * @param allowEnd - If true, allows index equal to components.length (useful for insert at end)
      */
-     // @methodtype private-method
+     // @methodtype private-method (Helper)
    private checkIndex(i: number, allowEnd: boolean = false): void {
         const max = allowEnd ? this.components.length : this.components.length - 1;
         if (i < 0 || i > max) {
