@@ -30,8 +30,8 @@ export class Name {
      * @param i - The index to check
      * @param allowEnd - If true, allows index equal to components.length (useful for insert at end)
      */
-     // @methodtype helper-method
-   private checkIndex(i: number, allowEnd: boolean = false): void {
+     // @methodtype assertion-method
+   private assertIsValidIndex(i: number, allowEnd: boolean = false): void {
         const max = allowEnd ? this.components.length : this.components.length - 1;
         if (i < 0 || i > max) {
             throw new Error(`Index ${i} out of bounds`);
@@ -76,18 +76,18 @@ export class Name {
     }
 
     /** Expects that new Name component c is properly masked */
-    // @methodtype mutation-method [ command-method ]
+    // @methodtype command-method
     public insert(i: number, c: string): void {
         this.checkIndex(i, true);
         this.components.splice(i, 0, c);
     }
 
     /** Expects that new Name component c is properly masked */
-    // @methodtype mutation-method [ command-method ]
+    // @methodtype command-method
     public append(c: string): void {
         this.components.push(c);
     }
-    // @methodtype mutation-method [ command-method ]
+    // @methodtype command-method
     public remove(i: number): void {
         this.checkIndex(i);
         this.components.splice(i, 1);
