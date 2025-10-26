@@ -24,19 +24,7 @@ export class Name {
         this.delimiter = delimiter;
         this.components = [...other];
     }
-    /**
-     * Checks whether the given index is within bounds for the components array.
-     * Throws an Error if the index is invalid.
-     * @param i - The index to check
-     * @param allowEnd - If true, allows index equal to components.length (useful for insert at end)
-     */
-     // @methodtype assertion-method
-   private assertIsValidIndex(i: number, allowEnd: boolean = false): void {
-        const max = allowEnd ? this.components.length : this.components.length - 1;
-        if (i < 0 || i > max) {
-            throw new Error(`Index ${i} out of bounds`);
-        }
-    }
+
     /**
      * Returns a human-readable representation of the Name instance using user-set control characters
      * Control characters are not escaped (creating a human-readable string)
@@ -58,14 +46,12 @@ export class Name {
      }
     // @methodtype get-method
     public getComponent(i: number): string {
-        this.assertIsValidIndex(i);
         return this.components[i];
     }
 
     /** Expects that new Name component c is properly masked */
      // @methodtype set-method
     public setComponent(i: number, c: string): void {
-        this.assertIsValidIndex(i);
         this.components[i] = c;
     }
 
@@ -78,7 +64,6 @@ export class Name {
     /** Expects that new Name component c is properly masked */
     // @methodtype command-method
     public insert(i: number, c: string): void {
-        this.assertIsValidIndex(i, true);
         this.components.splice(i, 0, c);
     }
 
@@ -89,7 +74,6 @@ export class Name {
     }
     // @methodtype command-method
     public remove(i: number): void {
-        this.assertIsValidIndex(i);
         this.components.splice(i, 1);
      }
 
