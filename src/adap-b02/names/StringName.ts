@@ -35,7 +35,7 @@ export class StringName implements Name {
     public asString(delimiter: string = this.delimiter): string {
        const defaultDelimiter = delimiter;
         if (typeof defaultDelimiter !== "string" || defaultDelimiter.length !== 1 || defaultDelimiter === ESCAPE_CHARACTER) {
-            throw new Error("Invalid delimiter");
+            throw new Error("Invalid delimiter input");
         }
         if (this.name === "") return "";
 
